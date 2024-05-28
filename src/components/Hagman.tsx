@@ -6,14 +6,14 @@ interface HagmanProps {
     animals: string[];
 }
 
-    const Hagman = ({words, fruts, animals}: HagmanProps) => {
-        const allWords = [...words, ...fruts, ...animals]; // Combina todas las palabras en una sola lista
-        const [selectedWord, setSelectedWord] = useState(allWords[Math.floor(Math.random() * allWords.length)]);
-        const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
-        const [errorCount, setErrorCount] = useState(0);
-        const [score, setScore] = useState(0);
+const Hagman = ({ words, fruts, animals }: HagmanProps) => {
+    const allWords = [...words, ...fruts, ...animals]; // Combina todas las palabras en una sola lista
+    const [selectedWord, setSelectedWord] = useState(allWords[Math.floor(Math.random() * allWords.length)]);
+    const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
+    const [errorCount, setErrorCount] = useState(0);
+    const [score, setScore] = useState(0);
 
-        const displayWord = selectedWord.split('').map((letter, index) => {
+    const displayWord = selectedWord.split('').map((letter) => {
         console.log("SelectedWord: ", selectedWord)
         if (guessedLetters.includes(letter)){
             console.log("guessedLetters: ", guessedLetters)
@@ -21,16 +21,16 @@ interface HagmanProps {
         } else {
             return '_';
         }
-        });
+    });
 
-        const handleGuess = (letter: string) => {
-            if (!guessedLetters.includes(letter)){
-                setGuessedLetters([...guessedLetters, letter]);
-                if (!selectedWord.includes(letter)){
-                    setErrorCount(prev => prev + 1); // Incrementar el contador de errores
-                }
+    const handleGuess = (letter: string) => {
+        if (!guessedLetters.includes(letter)){
+            setGuessedLetters([...guessedLetters, letter]);
+            if (!selectedWord.includes(letter)){
+                setErrorCount(prev => prev + 1); // Incrementar el contador de errores
             }
-        };
+        }
+    };
 
     const restartGame = () => {
         const allWords = [...words, ...fruts, ...animals]; // Combina todas las palabras en una sola lista
@@ -64,7 +64,6 @@ interface HagmanProps {
             <p>Score: {score}</p> {/* Muestra el puntaje */}
         </div>
     );
-
 };
 
 export default Hagman;

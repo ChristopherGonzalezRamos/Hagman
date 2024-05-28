@@ -1,4 +1,3 @@
-import React from 'react';
 import Hagman from './components/Hagman';
 import Welcome from './components/Welcome';
 
